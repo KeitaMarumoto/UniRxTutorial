@@ -8,13 +8,17 @@ public class PlayerController : MonoBehaviour {
 	{
 		Observable
 			.Interval(TimeSpan.FromSeconds(0.3f))
-			.Subscribe(_ => Debug.Log("position.y = " + transform.position.y))
-			.AddTo(this);
+			.Subscribe(_ => 
+			{
+				//Debug.Log("position.y = " + transform.position.y);
+			}).AddTo(this);
 
 		Observable
 			.Interval(TimeSpan.FromSeconds(1.5f))
-			.Subscribe(_ => Debug.Log("Update"))
-			.AddTo(this);
+			.Subscribe(_ => 
+			{
+				//Debug.Log("Update");
+			}).AddTo(this);
 
 		//PlayerのPositionを一定時間おきに監視して、指定以下になったらDestroyする。
 		Observable
