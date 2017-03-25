@@ -6,21 +6,15 @@ using System.Linq;
 public class PlayerController : MonoBehaviour {
 	void Start()
 	{
-		Observable
-			.Interval(TimeSpan.FromSeconds(0.3f))
-			.Subscribe(_ => 
-			{
-				//Debug.Log("position.y = " + transform.position.y);
-			}).AddTo(this);
+		//ShowDebugLog();
+		DestroyFellenPlayer();
+	}
 
-		Observable
-			.Interval(TimeSpan.FromSeconds(1.5f))
-			.Subscribe(_ => 
-			{
-				//Debug.Log("Update");
-			}).AddTo(this);
-
-		//PlayerのPositionを一定時間おきに監視して、指定以下になったらDestroyする。
+	/// <summary>
+	/// PlayerのPositionを一定時間おきに監視して、指定以下になったらDestroyする。
+	/// </summary>
+	private void DestroyFellenPlayer()
+	{
 		Observable
 			.Interval(TimeSpan.FromSeconds(1.5f))
 			.Where(_ => transform.position.y < -20.0f)
@@ -28,6 +22,26 @@ public class PlayerController : MonoBehaviour {
 			{
 				Debug.Log("Player Deleted!!");
 				Destroy(gameObject);
-			}).AddTo(this);
+			}).AddTo(gameObject);
+	}
+
+	/// <summary>
+	/// デバッグ用のログ出力メソッド。
+	/// </summary>
+	private void ShowDebugLog()
+	{
+		Observable
+			.Interval(TimeSpan.FromSeconds(0.3f))
+			.Subscribe(_ =>
+			{
+				Debug.Log("position.y = " + transform.position.y);
+			}).AddTo(gameObject);
+
+		Observable
+			.Interval(TimeSpan.FromSeconds(1.5f))
+			.Subscribe(_ =>
+			{
+				Debug.Log("Update");
+			}).AddTo(gameObject);
 	}
 }
