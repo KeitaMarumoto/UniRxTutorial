@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using UniRx;
-using UniRx.Triggers;
 using System;
 using System.Linq;
-using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	void Start()
