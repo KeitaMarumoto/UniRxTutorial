@@ -16,8 +16,8 @@ public class PlayerController : MonoBehaviour {
 	private void DestroyFellenPlayer()
 	{
 		Observable
-			.Interval(TimeSpan.FromSeconds(1.5f))
-			.Where(_ => transform.position.y < -20.0f)
+			.Interval(TimeSpan.FromSeconds(0.5f))
+			.Where(_ => transform.position.y < -8.0f)
 			.Subscribe(_ =>
 			{
 				Debug.Log("Player Deleted!!");
@@ -31,14 +31,14 @@ public class PlayerController : MonoBehaviour {
 	private void ShowDebugLog()
 	{
 		Observable
-			.Interval(TimeSpan.FromSeconds(0.3f))
+			.Interval(TimeSpan.FromSeconds(0.2f))
 			.Subscribe(_ =>
 			{
 				Debug.Log("position.y = " + transform.position.y);
 			}).AddTo(gameObject);
 
 		Observable
-			.Interval(TimeSpan.FromSeconds(1.5f))
+			.Interval(TimeSpan.FromSeconds(0.5f))
 			.Subscribe(_ =>
 			{
 				Debug.Log("Update");
