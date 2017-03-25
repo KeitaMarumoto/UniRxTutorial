@@ -27,7 +27,7 @@ public class SphereManager : MonoBehaviour {
 			{
 				_time++;
 				Debug.Log(_time);
-			}).AddTo(gameObject);
+			}).AddTo(this);
 	}
 
 	/// <summary>
@@ -44,8 +44,8 @@ public class SphereManager : MonoBehaviour {
 					.ToObservable()
 					.Subscribe(s => Destroy(s));
 
-				Destroy(gameObject);
-			}).AddTo(gameObject);
+				Destroy(this);
+			}).AddTo(this);
 	}
 
 	/// <summary>
@@ -63,6 +63,6 @@ public class SphereManager : MonoBehaviour {
 				.Select(s => s.transform.position.ToString())
 				.ToObservable()
 				.Subscribe(s => Debug.Log(s));
-			}).AddTo(gameObject);
+			}).AddTo(this);
 	}
 }
